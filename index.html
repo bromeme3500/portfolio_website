@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neeraj K R | Data Science & Machine Learning Portfolio</title>
+  <meta name="description" content="Portfolio of Neeraj K R, Data Science Undergrad & Machine Learning Developer specializing in Deep Learning, Computer Vision, and Backend Engineering." />
+  <meta name="keywords" content="Neeraj K R, Data Science, Machine Learning, Deep Learning, PyTorch, YOLO, CSRNet, Flask, Portfolio" />
+  <meta name="author" content="Neeraj K R" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            primary: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            },
+            accent: {
+              cyan: '#06b6d4',
+              emerald: '#10b981',
+              violet: '#8b5cf6',
+            },
+            dark: {
+              bg: '#090d16',
+              surface: '#0f172a',
+              card: '#131e36',
+              border: '#1e293b',
+            }
+          },
+          animation: {
+            'blob': 'blob 8s infinite',
+            'float': 'float 4s ease-in-out infinite',
+            'pulse-subtle': 'pulseSubtle 2.5s infinite',
+          },
+          keyframes: {
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -40px) scale(1.08)' },
+              '66%': { transform: 'translate(-25px, 20px) scale(0.94)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            pulseSubtle: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0.65' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-[#090d16] text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white transition-colors duration-300">
+
+  <!-- Background Ambient Glows -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl animate-blob"></div>
+    <div class="absolute top-1/3 -right-40 w-96 h-96 bg-cyan-600/15 rounded-full blur-3xl animate-blob" style="animation-delay: 2s;"></div>
+    <div class="absolute bottom-10 left-1/4 w-96 h-96 bg-violet-600/15 rounded-full blur-3xl animate-blob" style="animation-delay: 4s;"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25"></div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#090d16]/80 border-b border-slate-800/60 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#hero" class="group flex items-center gap-3 text-xl font-bold tracking-tight">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-primary-600 to-cyan-400 p-[2px] transition-transform duration-300 group-hover:scale-105 shadow-lg shadow-indigo-500/20">
+          <div class="w-full h-full bg-[#0f172a] rounded-[10px] flex items-center justify-center text-cyan-400 font-mono font-bold text-sm">
+            NR
+          </div>
+        </div>
+        <span class="text-white group-hover:text-cyan-400 transition-colors">Neeraj <span class="text-indigo-400">K R</span></span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-cyan-400 transition-colors nav-link">About</a>
+        <a href="#skills" class="hover:text-cyan-400 transition-colors nav-link">Skills</a>
+        <a href="#projects" class="hover:text-cyan-400 transition-colors nav-link">Projects</a>
+        <a href="#education" class="hover:text-cyan-400 transition-colors nav-link">Education</a>
+        <a href="#contact" class="hover:text-cyan-400 transition-colors nav-link">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-medium text-sm shadow-md shadow-indigo-600/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+          Get In Touch <i class="fa-solid fa-arrow-right ml-1.5 text-xs"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="flex md:hidden items-center">
+        <button id="mobileMenuBtn" aria-label="Toggle menu" class="text-slate-300 hover:text-white p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <i class="fa-solid fa-bars-staggered text-xl" id="menuIcon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#0f172a]/95 backdrop-blur-xl border-b border-slate-800 px-6 py-6 transition-all duration-300">
+      <div class="flex flex-col gap-4 text-base font-medium text-slate-200">
+        <a href="#about" class="mobile-nav-link hover:text-cyan-400 py-2 border-b border-slate-800/60">About</a>
+        <a href="#skills" class="mobile-nav-link hover:text-cyan-400 py-2 border-b border-slate-800/60">Skills</a>
+        <a href="#projects" class="mobile-nav-link hover:text-cyan-400 py-2 border-b border-slate-800/60">Projects</a>
+        <a href="#education" class="mobile-nav-link hover:text-cyan-400 py-2 border-b border-slate-800/60">Education</a>
+        <a href="#contact" class="mobile-nav-link hover:text-cyan-400 py-2 border-b border-slate-800/60">Contact</a>
+        <a href="#contact" class="mobile-nav-link mt-2 text-center py-3 rounded-xl bg-indigo-600 text-white font-semibold">
+          Get In Touch
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="relative z-10 pt-28">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="min-h-[calc(100vh-7rem)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+      <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Hero Text Column -->
+        <div class="lg:col-span-7 flex flex-col items-start space-y-6 text-left">
+          
+          <!-- Status Badge -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs sm:text-sm font-medium tracking-wide">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="w-2 h-2 rounded-full bg-emerald-400 -ml-4"></span>
+            <span>Available for Machine Learning & Data Science Roles</span>
+          </div>
+
+          <!-- Main Heading -->
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
+            Hi, I'm <br class="hidden sm:inline" />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-teal-300">
+              Neeraj K R
+            </span>
+          </h1>
+
+          <!-- Dynamic Subheading with Typing Effect -->
+          <p class="text-lg sm:text-2xl font-semibold text-slate-300 flex flex-wrap items-center gap-2">
+            <span>Specializing in</span>
+            <span class="text-cyan-400 font-mono" id="typingText"></span>
+            <span class="inline-block w-0.5 h-6 bg-cyan-400 animate-pulse-subtle"></span>
+          </p>
+
+          <!-- Short Narrative -->
+          <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl">
+            7th Semester Data Science undergraduate at Mar Athanasius College of Engineering. 
+            Passionate about architecting high-accuracy deep learning pipelines (YOLO, CSRNet), 
+            tackling challenging algorithmic problems, and developing robust backend systems.
+          </p>
+
+          <!-- CTAs & Action Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-3 w-full sm:w-auto">
+            <a href="#projects" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:opacity-95 text-white font-semibold text-center shadow-lg shadow-indigo-600/25 transition-all transform hover:-translate-y-0.5">
+              Explore Projects <i class="fa-solid fa-code ml-2 text-sm"></i>
+            </a>
+            <a href="mailto:neerajkr5354@gmail.com" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 font-semibold text-center transition-all">
+              <i class="fa-regular fa-envelope mr-2"></i> neerajkr5354@gmail.com
+            </a>
+          </div>
+
+          <!-- Quick Highlight Metrics -->
+          <div class="grid grid-cols-3 gap-4 sm:gap-8 pt-6 border-t border-slate-800/80 w-full max-w-xl">
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-white">7th Sem</div>
+              <div class="text-xs sm:text-sm text-slate-400 mt-1">B.Tech Data Science</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400">Deep Learning</div>
+              <div class="text-xs sm:text-sm text-slate-400 mt-1">YOLO & CSRNet</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-indigo-400">Full-Stack</div>
+              <div class="text-xs sm:text-sm text-slate-400 mt-1">Python & Flask</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Hero Visual / Profile Image Column -->
+        <div class="lg:col-span-5 flex justify-center items-center relative">
+          <div class="relative w-72 sm:w-88 lg:w-96 aspect-square">
+            
+            <!-- Glow Rings -->
+            <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-400 rounded-3xl blur-2xl opacity-30 animate-pulse-subtle"></div>
+            
+            <!-- Image Card Container -->
+            <div class="relative w-full h-full rounded-2xl overflow-hidden p-1.5 bg-gradient-to-b from-indigo-500/40 via-slate-800/60 to-cyan-500/30 shadow-2xl backdrop-blur-xl border border-slate-700/50">
+              <div class="w-full h-full rounded-xl overflow-hidden bg-slate-900 relative group">
+                <img 
+                  src="assets/profile.jpg" 
+                  alt="Neeraj K R - Data Science Engineer" 
+                  class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#090d16] via-transparent to-transparent opacity-40"></div>
+              </div>
+            </div>
+
+            <!-- Floating Tech Badges -->
+            <div class="absolute -bottom-5 -left-5 bg-[#0f172a]/95 backdrop-blur-md border border-slate-700 px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-3 animate-float">
+              <div class="w-9 h-9 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center text-lg font-bold">
+                <i class="fa-brands fa-python"></i>
+              </div>
+              <div>
+                <div class="text-xs font-semibold text-slate-200">Python & PyTorch</div>
+                <div class="text-[11px] text-slate-400">Data Science & AI</div>
+              </div>
+            </div>
+
+            <div class="absolute -top-4 -right-4 bg-[#0f172a]/95 backdrop-blur-md border border-slate-700 px-4 py-2 rounded-xl shadow-xl flex items-center gap-2.5 animate-float" style="animation-delay: 2s;">
+              <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+              <div class="text-xs font-mono font-medium text-cyan-300">
+                Expected 2027
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/60 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono uppercase tracking-widest mb-3">
+            About Me
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Driven by Data, Algorithms & Intelligent Systems
+          </h2>
+          <p class="text-slate-400 text-base sm:text-lg mt-4">
+            Solving real-world challenges through analytical rigor and computer vision engineering.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- About Narrative -->
+          <div class="lg:col-span-7 space-y-6 text-slate-300 leading-relaxed text-base sm:text-lg">
+            <p>
+              I am currently in my <strong class="text-white">7th semester of Bachelor of Technology in Data Science</strong> at <strong class="text-cyan-400">Mar Athanasius College of Engineering (MACE), Kothamangalam</strong> (expected graduation 2027).
+            </p>
+            <p>
+              My academic and project trajectory is centered on transforming raw datasets into accurate, actionable predictions and vision-based models. From building hybrid deep-learning models for <strong class="text-indigo-400">crowd density estimation (combining YOLO & CSRNet)</strong> to automating administrative workflows with Flask and MySQL, I thrive on tackling algorithmic complexity with clean, scalable code.
+            </p>
+            <p>
+              Beyond development, I have a deep passion for problem solving on competitive coding platforms, optimizing algorithms, and exploring emerging breakthroughs in machine learning and scalable distributed software.
+            </p>
+
+            <!-- Key Pillars Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/40 transition-colors">
+                <div class="flex items-center gap-3 text-cyan-400 font-semibold mb-1">
+                  <i class="fa-solid fa-brain"></i>
+                  <span>Deep Learning & CV</span>
+                </div>
+                <p class="text-slate-400 text-xs sm:text-sm">
+                  Experience in CNNs, YOLO object detection, CSRNet density estimation, and OpenCV pipelines.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/40 transition-colors">
+                <div class="flex items-center gap-3 text-indigo-400 font-semibold mb-1">
+                  <i class="fa-solid fa-code-compare"></i>
+                  <span>Algorithms & Problem Solving</span>
+                </div>
+                <p class="text-slate-400 text-xs sm:text-sm">
+                  Firm grasp of Data Structures, complexity optimization, and competitive algorithmic challenges.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/40 transition-colors">
+                <div class="flex items-center gap-3 text-emerald-400 font-semibold mb-1">
+                  <i class="fa-solid fa-chart-line"></i>
+                  <span>Data Science & Analytics</span>
+                </div>
+                <p class="text-slate-400 text-xs sm:text-sm">
+                  Data preprocessing, feature engineering, statistical modeling with Pandas, NumPy, and Power BI.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/40 transition-colors">
+                <div class="flex items-center gap-3 text-violet-400 font-semibold mb-1">
+                  <i class="fa-solid fa-server"></i>
+                  <span>Backend & Database Systems</span>
+                </div>
+                <p class="text-slate-400 text-xs sm:text-sm">
+                  Designing RESTful APIs with Flask and architecting relational schemas with MySQL.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Quick Info & Contact Card -->
+          <div class="lg:col-span-5">
+            <div class="p-8 rounded-2xl bg-gradient-to-br from-slate-900/90 to-[#0f172a] border border-slate-800 shadow-xl space-y-6">
+              <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-id-card text-indigo-400"></i>
+                Candidate Profile
+              </h3>
+              
+              <ul class="space-y-4 text-sm divide-y divide-slate-800/80">
+                <li class="flex items-center justify-between pt-3">
+                  <span class="text-slate-400 flex items-center gap-2"><i class="fa-solid fa-user text-slate-500"></i> Full Name</span>
+                  <span class="text-white font-medium">Neeraj K R</span>
+                </li>
+                <li class="flex items-center justify-between pt-3">
+                  <span class="text-slate-400 flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-slate-500"></i> Degree</span>
+                  <span class="text-white font-medium text-right">B.Tech in Data Science</span>
+                </li>
+                <li class="flex items-center justify-between pt-3">
+                  <span class="text-slate-400 flex items-center gap-2"><i class="fa-solid fa-building-columns text-slate-500"></i> College</span>
+                  <span class="text-white font-medium text-right">MACE, Kothamangalam</span>
+                </li>
+                <li class="flex items-center justify-between pt-3">
+                  <span class="text-slate-400 flex items-center gap-2"><i class="fa-solid fa-calendar text-slate-500"></i> Graduation</span>
+                  <span class="text-cyan-400 font-mono font-medium">Expected 2027 (7th Sem)</span>
+                </li>
+                <li class="flex items-center justify-between pt-3">
+                  <span class="text-slate-400 flex items-center gap-2"><i class="fa-solid fa-envelope text-slate-500"></i> Email</span>
+                  <a href="mailto:neerajkr5354@gmail.com" class="text-indigo-400 hover:underline">neerajkr5354@gmail.com</a>
+                </li>
+                <li class="flex items-center justify-between pt-3">
+                  <span class="text-slate-400 flex items-center gap-2"><i class="fa-solid fa-phone text-slate-500"></i> Phone</span>
+                  <a href="tel:+918089996214" class="text-slate-300 font-mono hover:text-white">+91 8089996214</a>
+                </li>
+                <li class="flex items-center justify-between pt-3">
+                  <span class="text-slate-400 flex items-center gap-2"><i class="fa-solid fa-location-dot text-slate-500"></i> Location</span>
+                  <span class="text-white font-medium">Kerala, India</span>
+                </li>
+              </ul>
+
+              <div class="pt-2">
+                <a href="#contact" class="block w-full text-center py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-medium border border-slate-700 transition-colors">
+                  Contact Neeraj Directly
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/30 border-t border-slate-800/60 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-3">
+            Technical Proficiency
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Skills & Technological Stack
+          </h2>
+          <p class="text-slate-400 text-base sm:text-lg mt-4">
+            Curated toolkit covering deep learning frameworks, data analytics pipelines, and backend architectures.
+          </p>
+        </div>
+
+        <!-- Skills Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- Category 1: Deep Learning & Computer Vision -->
+          <div class="p-6 rounded-2xl bg-[#0f172a]/80 border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/5 group">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Deep Learning & Vision</h3>
+            <p class="text-slate-400 text-sm mb-4">Neural network architectures for detection, classification, and density estimation.</p>
+            
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag"><i class="fa-solid fa-network-wired text-cyan-400 text-xs mr-1.5"></i>CNNs</span>
+              <span class="skill-tag"><i class="fa-solid fa-crosshairs text-orange-400 text-xs mr-1.5"></i>YOLO (Object Detection)</span>
+              <span class="skill-tag"><i class="fa-solid fa-users-viewfinder text-purple-400 text-xs mr-1.5"></i>CSRNet (Density Estimation)</span>
+              <span class="skill-tag"><i class="fa-solid fa-fire text-red-400 text-xs mr-1.5"></i>PyTorch</span>
+              <span class="skill-tag"><i class="fa-solid fa-camera text-blue-400 text-xs mr-1.5"></i>OpenCV</span>
+            </div>
+          </div>
+
+          <!-- Category 2: Programming Languages -->
+          <div class="p-6 rounded-2xl bg-[#0f172a]/80 border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/5 group">
+            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Programming Languages</h3>
+            <p class="text-slate-400 text-sm mb-4">Core languages used for machine learning models, applications, and scripting.</p>
+            
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag"><i class="fa-brands fa-python text-yellow-400 text-xs mr-1.5"></i>Python</span>
+              <span class="skill-tag"><i class="fa-brands fa-java text-red-500 text-xs mr-1.5"></i>Java</span>
+              <span class="skill-tag"><i class="fa-solid fa-terminal text-blue-400 text-xs mr-1.5"></i>C#</span>
+              <span class="skill-tag"><i class="fa-solid fa-database text-emerald-400 text-xs mr-1.5"></i>SQL</span>
+            </div>
+          </div>
+
+          <!-- Category 3: Data Science & Analytics -->
+          <div class="p-6 rounded-2xl bg-[#0f172a]/80 border border-slate-800 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/5 group">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Data Science & Analytics</h3>
+            <p class="text-slate-400 text-sm mb-4">Data wrangling, statistical inference, feature scaling, and visualization dashboards.</p>
+            
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag"><i class="fa-solid fa-table text-indigo-400 text-xs mr-1.5"></i>Pandas</span>
+              <span class="skill-tag"><i class="fa-solid fa-cube text-cyan-400 text-xs mr-1.5"></i>NumPy</span>
+              <span class="skill-tag"><i class="fa-solid fa-gear text-orange-400 text-xs mr-1.5"></i>Scikit-learn</span>
+              <span class="skill-tag"><i class="fa-solid fa-chart-simple text-amber-400 text-xs mr-1.5"></i>Power BI</span>
+              <span class="skill-tag"><i class="fa-solid fa-calculator text-teal-400 text-xs mr-1.5"></i>Statistics & Prob</span>
+            </div>
+          </div>
+
+          <!-- Category 4: Web & Backend Technologies -->
+          <div class="p-6 rounded-2xl bg-[#0f172a]/80 border border-slate-800 hover:border-violet-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-violet-500/5 group">
+            <div class="w-12 h-12 rounded-xl bg-violet-500/10 text-violet-400 flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Web & Backend</h3>
+            <p class="text-slate-400 text-sm mb-4">RESTful API creation, model serving integration, and database operations.</p>
+            
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag"><i class="fa-solid fa-pepper-hot text-emerald-400 text-xs mr-1.5"></i>Flask</span>
+              <span class="skill-tag"><i class="fa-solid fa-network-wired text-blue-400 text-xs mr-1.5"></i>REST APIs</span>
+              <span class="skill-tag"><i class="fa-solid fa-database text-cyan-400 text-xs mr-1.5"></i>MySQL</span>
+              <span class="skill-tag"><i class="fa-brands fa-html5 text-orange-500 text-xs mr-1.5"></i>HTML5 / CSS3</span>
+            </div>
+          </div>
+
+          <!-- Category 5: Core Engineering Concepts -->
+          <div class="p-6 rounded-2xl bg-[#0f172a]/80 border border-slate-800 hover:border-pink-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/5 group">
+            <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Core Concepts</h3>
+            <p class="text-slate-400 text-sm mb-4">Algorithmic foundations, complexity minimization, and structured software design.</p>
+            
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag">Data Structures</span>
+              <span class="skill-tag">Algorithm Optimization</span>
+              <span class="skill-tag">Problem Solving</span>
+              <span class="skill-tag">DBMS & Relational Design</span>
+            </div>
+          </div>
+
+          <!-- Category 6: ML Pipeline & Optimization -->
+          <div class="p-6 rounded-2xl bg-[#0f172a]/80 border border-slate-800 hover:border-amber-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/5 group">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-sliders"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Model Tuning & Pipelines</h3>
+            <p class="text-slate-400 text-sm mb-4">Techniques to optimize generalization, avoid overfitting, and tune hyperparameters.</p>
+            
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag">Data Augmentation</span>
+              <span class="skill-tag">Loss Tuning</span>
+              <span class="skill-tag">Hyperparameter Tuning</span>
+              <span class="skill-tag">Decision Trees</span>
+              <span class="skill-tag">Evaluation (Precision, Recall, ROC)</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/60 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-mono uppercase tracking-widest mb-3">
+            Featured Portfolio
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Key Projects & Research Work
+          </h2>
+          <p class="text-slate-400 text-base sm:text-lg mt-4">
+            Hands-on machine learning systems, deep learning computer vision architectures, and backend applications.
+          </p>
+
+          <!-- Project Filter Tabs -->
+          <div class="flex flex-wrap justify-center gap-3 mt-8" id="projectFilter">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="ml-dl">Machine Learning & DL</button>
+            <button class="filter-btn" data-filter="web-db">Web & Database Systems</button>
+          </div>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+          <!-- PROJECT 1: CSRNet + YOLO Crowd Counting -->
+          <div class="project-card flex flex-col justify-between rounded-2xl bg-[#0f172a] border border-slate-800 overflow-hidden hover:border-cyan-500/60 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10 group" data-category="ml-dl">
+            <div>
+              <!-- Visual Header / Banner -->
+              <div class="relative h-52 bg-gradient-to-tr from-slate-900 via-indigo-950 to-cyan-950 p-6 flex flex-col justify-between overflow-hidden border-b border-slate-800">
+                <div class="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                
+                <div class="relative z-10 flex items-center justify-between">
+                  <span class="px-2.5 py-1 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-mono font-medium">
+                    Deep Learning / CV
+                  </span>
+                  <div class="w-9 h-9 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-cyan-400">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                  </div>
+                </div>
+
+                <div class="relative z-10">
+                  <div class="text-xs font-mono text-cyan-400 mb-1">HYBRID ARCHITECTURE</div>
+                  <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                    CSRNet + YOLO Crowd Counting
+                  </h3>
+                </div>
+              </div>
+
+              <!-- Card Content -->
+              <div class="p-6 space-y-4">
+                <p class="text-slate-300 text-sm leading-relaxed">
+                  Developed an innovative hybrid computer vision crowd counting system combining <strong class="text-white">YOLO object detection</strong> with <strong class="text-white">CSRNet density estimation</strong> to solve counting degradation across both sparse and highly congested crowds.
+                </p>
+
+                <!-- Key Highlights List -->
+                <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800/80 pt-3">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-cyan-400 mt-0.5"></i>
+                    <span><strong>Switching & Merging Strategy:</strong> Dynamically uses YOLO for sparse scenes and CSRNet for dense congestion.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-cyan-400 mt-0.5"></i>
+                    <span><strong>Model Training & Tuning:</strong> Optimized loss functions & applied aggressive data augmentation on crowd benchmarks.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-cyan-400 mt-0.5"></i>
+                    <span><strong>Visualizations:</strong> Real-time & batch processing with OpenCV density heatmaps.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card Footer / Tech Tags -->
+            <div class="p-6 pt-0">
+              <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800/60">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">PyTorch</span>
+                <span class="tech-pill">YOLO</span>
+                <span class="tech-pill">CSRNet</span>
+                <span class="tech-pill">OpenCV</span>
+                <span class="tech-pill">CNNs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 2: Student Allotment System -->
+          <div class="project-card flex flex-col justify-between rounded-2xl bg-[#0f172a] border border-slate-800 overflow-hidden hover:border-indigo-500/60 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 group" data-category="web-db">
+            <div>
+              <!-- Visual Header / Banner -->
+              <div class="relative h-52 bg-gradient-to-tr from-slate-900 via-slate-900 to-indigo-950 p-6 flex flex-col justify-between overflow-hidden border-b border-slate-800">
+                <div class="absolute inset-0 bg-[radial-gradient(#818cf8_1px,transparent_1px)] [background-size:16px_16px] opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                
+                <div class="relative z-10 flex items-center justify-between">
+                  <span class="px-2.5 py-1 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-mono font-medium">
+                    Backend & Web Automation
+                  </span>
+                  <div class="w-9 h-9 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-indigo-400">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                  </div>
+                </div>
+
+                <div class="relative z-10">
+                  <div class="text-xs font-mono text-indigo-400 mb-1">ALGORITHMIC ALLOCATION</div>
+                  <h3 class="text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">
+                    Student Allotment System
+                  </h3>
+                </div>
+              </div>
+
+              <!-- Card Content -->
+              <div class="p-6 space-y-4">
+                <p class="text-slate-300 text-sm leading-relaxed">
+                  Engineered a full-featured web-based allocation system to automate student academic admissions and seat distribution, replacing slow, error-prone manual administrative processes.
+                </p>
+
+                <!-- Key Highlights List -->
+                <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800/80 pt-3">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-indigo-400 mt-0.5"></i>
+                    <span><strong>Dynamic Allocation Algorithm:</strong> Designed algorithms ensuring fair and optimized seat distribution based on rank and merit preferences.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-indigo-400 mt-0.5"></i>
+                    <span><strong>RESTful Services:</strong> Built modular backend routes with Flask to handle authentication, queries, and transactions.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-indigo-400 mt-0.5"></i>
+                    <span><strong>Relational Data Layer:</strong> Designed normalized MySQL schemas for fast, consistent retrieval of student records.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card Footer / Tech Tags -->
+            <div class="p-6 pt-0">
+              <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800/60">
+                <span class="tech-pill">Flask</span>
+                <span class="tech-pill">MySQL</span>
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">RESTful API</span>
+                <span class="tech-pill">Algorithm Design</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 3: Student Loan Approval System -->
+          <div class="project-card flex flex-col justify-between rounded-2xl bg-[#0f172a] border border-slate-800 overflow-hidden hover:border-emerald-500/60 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 group" data-category="ml-dl">
+            <div>
+              <!-- Visual Header / Banner -->
+              <div class="relative h-52 bg-gradient-to-tr from-slate-900 via-slate-900 to-emerald-950 p-6 flex flex-col justify-between overflow-hidden border-b border-slate-800">
+                <div class="absolute inset-0 bg-[radial-gradient(#34d399_1px,transparent_1px)] [background-size:16px_16px] opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                
+                <div class="relative z-10 flex items-center justify-between">
+                  <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-mono font-medium">
+                    Machine Learning / FinTech
+                  </span>
+                  <div class="w-9 h-9 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-emerald-400">
+                    <i class="fa-solid fa-landmark"></i>
+                  </div>
+                </div>
+
+                <div class="relative z-10">
+                  <div class="text-xs font-mono text-emerald-400 mb-1">PREDICTIVE ANALYTICS</div>
+                  <h3 class="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">
+                    Student Loan Approval System
+                  </h3>
+                </div>
+              </div>
+
+              <!-- Card Content -->
+              <div class="p-6 space-y-4">
+                <p class="text-slate-300 text-sm leading-relaxed">
+                  Developed an end-to-end predictive machine learning model to evaluate student loan applications, mitigating credit risk and automating approval decisions through data-driven inference.
+                </p>
+
+                <!-- Key Highlights List -->
+                <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800/80 pt-3">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                    <span><strong>Data Preprocessing:</strong> Handled missing data imputation, categorical one-hot encoding, and numerical feature scaling.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                    <span><strong>Decision Tree Classifier:</strong> Tuned tree depth, splitting criteria, and minimum sample leaves to prevent overfitting.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                    <span><strong>Rigorous Evaluation:</strong> Benchmarked using confusion matrices, Precision, Recall, and ROC-AUC metrics.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card Footer / Tech Tags -->
+            <div class="p-6 pt-0">
+              <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800/60">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">Scikit-learn</span>
+                <span class="tech-pill">Decision Trees</span>
+                <span class="tech-pill">Pandas</span>
+                <span class="tech-pill">Feature Scaling</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDUCATION & ACADEMICS SECTION -->
+    <section id="education" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/30 border-t border-slate-800/60 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono uppercase tracking-widest mb-3">
+            Academic Background
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Education & Coursework
+          </h2>
+          <p class="text-slate-400 text-base sm:text-lg mt-4">
+            Strong foundational grounding in theoretical computer science, mathematical statistics, and machine learning.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          
+          <!-- Timeline Card -->
+          <div class="relative pl-8 sm:pl-10 border-l-2 border-indigo-500/40 space-y-12">
+            
+            <!-- Degree Item -->
+            <div class="relative group">
+              <!-- Timeline Icon Dot -->
+              <div class="absolute -left-[45px] sm:-left-[49px] top-1 w-9 h-9 rounded-full bg-[#0f172a] border-2 border-indigo-500 flex items-center justify-center text-indigo-400 text-sm shadow-md shadow-indigo-500/30">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+
+              <div class="p-8 rounded-2xl bg-[#0f172a] border border-slate-800 hover:border-slate-700 transition-all shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 font-mono text-xs">
+                    2023 - Expected 2027
+                  </span>
+                  <span class="text-cyan-400 font-mono text-xs font-semibold">
+                    Current: 7th Semester
+                  </span>
+                </div>
+
+                <h3 class="text-2xl font-bold text-white">
+                  Bachelor of Technology in Data Science
+                </h3>
+
+                <div class="text-indigo-400 font-medium text-base mt-1 flex items-center gap-2">
+                  <i class="fa-solid fa-building-columns text-sm"></i>
+                  Mar Athanasius College of Engineering (MACE), Kothamangalam
+                </div>
+
+                <p class="text-slate-300 text-sm sm:text-base mt-4 leading-relaxed">
+                  Currently pursuing 7th semester studies focusing extensively on deep learning, predictive data analysis, object detection pipelines, and advanced software algorithms.
+                </p>
+
+                <!-- Coursework Tags -->
+                <div class="mt-6 pt-5 border-t border-slate-800">
+                  <div class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">
+                    Key Relevant Coursework:
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="coursework-tag">Data Structures & Algorithms</span>
+                    <span class="coursework-tag">Machine Learning</span>
+                    <span class="coursework-tag">Database Management Systems (DBMS)</span>
+                    <span class="coursework-tag">Probability & Statistics</span>
+                    <span class="coursework-tag">Deep Learning & Vision</span>
+                    <span class="coursework-tag">Algorithm Optimization</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/60 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-3">
+            Let's Connect
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Get In Touch
+          </h2>
+          <p class="text-slate-400 text-base sm:text-lg mt-4">
+            Open for internships, project collaborations, and machine learning or software engineering opportunities.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 max-w-5xl mx-auto">
+          
+          <!-- Contact Info Cards Column -->
+          <div class="lg:col-span-5 space-y-4">
+            
+            <a href="mailto:neerajkr5354@gmail.com" class="p-6 rounded-2xl bg-[#0f172a] border border-slate-800 hover:border-indigo-500/50 transition-all flex items-start gap-4 group">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform flex-shrink-0">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <div>
+                <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Email Me</div>
+                <div class="text-white font-semibold text-sm sm:text-base group-hover:text-cyan-400 transition-colors break-all">
+                  neerajkr5354@gmail.com
+                </div>
+              </div>
+            </a>
+
+            <a href="tel:+918089996214" class="p-6 rounded-2xl bg-[#0f172a] border border-slate-800 hover:border-cyan-500/50 transition-all flex items-start gap-4 group">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform flex-shrink-0">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Call Directly</div>
+                <div class="text-white font-semibold text-sm sm:text-base group-hover:text-cyan-400 transition-colors font-mono">
+                  +91 8089996214
+                </div>
+              </div>
+            </a>
+
+            <div class="p-6 rounded-2xl bg-[#0f172a] border border-slate-800 flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl flex-shrink-0">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Location</div>
+                <div class="text-white font-semibold text-sm sm:text-base">
+                  Kerala, India
+                </div>
+                <div class="text-xs text-slate-400 mt-1">Mar Athanasius College of Engineering</div>
+              </div>
+            </div>
+
+            <!-- Social Links Quick Bar -->
+            <div class="pt-4 flex items-center gap-3">
+              <a href="mailto:neerajkr5354@gmail.com" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all shadow-md">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all shadow-md" title="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all shadow-md" title="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Interactive Message Form -->
+          <div class="lg:col-span-7">
+            <div class="p-8 rounded-2xl bg-[#0f172a] border border-slate-800 shadow-2xl">
+              <h3 class="text-xl font-bold text-white mb-2">Send a Message</h3>
+              <p class="text-slate-400 text-xs sm:text-sm mb-6">
+                Fill out the quick form below or reach out directly at my email.
+              </p>
+
+              <form id="contactForm" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-mono text-slate-300 mb-1.5" for="name">Your Name</label>
+                    <input 
+                      type="text" 
+                      id="name" 
+                      required 
+                      placeholder="e.g. Alex Smith"
+                      class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 text-sm transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-mono text-slate-300 mb-1.5" for="email">Your Email</label>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      required 
+                      placeholder="alex@company.com"
+                      class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 text-sm transition-all"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 mb-1.5" for="subject">Subject</label>
+                  <input 
+                    type="text" 
+                    id="subject" 
+                    required 
+                    placeholder="Project Inquiry / Internship Role"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 text-sm transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 mb-1.5" for="message">Message</label>
+                  <textarea 
+                    id="message" 
+                    rows="4" 
+                    required 
+                    placeholder="Hello Neeraj, I'd like to talk regarding..."
+                    class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 text-sm transition-all"
+                  ></textarea>
+                </div>
+
+                <div id="formStatus" class="hidden text-xs py-2 px-3 rounded-lg"></div>
+
+                <button 
+                  type="submit" 
+                  class="w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:opacity-95 text-white font-semibold text-sm shadow-lg shadow-indigo-600/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
+                >
+                  <span>Send Message</span>
+                  <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-slate-800/80 bg-[#070b12] text-slate-400 text-sm relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-white">Neeraj K R</span>
+        <span>•</span>
+        <span class="text-xs text-slate-500">Data Science & Machine Learning Portfolio</span>
+      </div>
+
+      <div class="flex items-center gap-6 text-xs text-slate-400">
+        <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+        <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
+        <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+        <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+      </div>
+
+      <div class="text-xs text-slate-500">
+        &copy; <span id="currentYear"></span> Neeraj K R. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Scroll To Top Button -->
+  <button id="scrollTopBtn" aria-label="Scroll to top" class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-indigo-600 hover:bg-cyan-500 text-white shadow-xl shadow-indigo-600/30 flex items-center justify-center text-sm z-40 transition-all duration-300 opacity-0 pointer-events-none transform translate-y-3">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>
